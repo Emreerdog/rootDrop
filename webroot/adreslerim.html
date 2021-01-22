@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Yellowtail">
+        <link rel="stylesheet" type="text/css" href="lim.css">
+        <title>Main Page</title>
+    </head>
+<body>
+    <div class="container-fluid shadow-sm mainBody">
+        <div id="limnav">
+
+        </div>
+        <br>
+        <div class="d-flex flex-row">
+            <div class="p-2 h4 mx-3" onload="displayAddresses()">Adreslerim</div>
+            <div class="p-2 flex-shrink-1 ml-auto"><button type="button" class="btn btn-outline-success w-100" onclick="adresEklePencere()"><i class="fa fa-plus"></i> Yeni Adres Ekle</button></div>
+        </div>
+        <div class="row mx-2 my-1 mb-4" id="addresContainer">
+            <!--It will be filled by javascript-->   
+        </div>
+        <script>
+            
+            function displayAddresses(){
+                /*var initAJAX = new XMLHttpRequest();
+                initAJAX.open("POST", "/profile/address", true);
+                initAJAX.send();
+                var responseAddress = JSON.parse(this.responseText);*/
+                
+                var myAdresContainer = document.getElementById("addresContainer");
+                var showMessage = document.createElement("div");
+
+                showMessage.className += "col-12 h4 text-center my-2 border rounded-lg py-5 px-5";
+                showMessage.innerHTML = "Hiç Adresin yok :)";
+                showMessage.id = "noadres";
+                myAdresContainer.appendChild(showMessage);
+                // Get the data using ajax 
+            }
+            displayAddresses();
+            function adresDuzenle(addrButonID){
+                var addrSehirStr = "addrSehir" + addrButonID;
+                var addrIlceStr = "addrIlce" + addrButonID;
+                var addrSokakStr = "addrSokak" + addrButonID;
+                var addrNumaraStr = "addrNumara" + addrButonID;
+                var addrSehir = document.getElementById(addrSehirStr).innerHTML;
+                var addrIlce = document.getElementById(addrIlceStr).innerHTML;
+                var addrSokak = document.getElementById(addrSokakStr).innerHTML;
+                var addrNumara = document.getElementById(addrNumaraStr).innerHTML;
+
+                console.log(addrSehir);
+                console.log(addrIlce);
+                console.log(addrSokak);
+                console.log(addrNumara);
+
+                document.getElementById("InputIl").value = addrSehir;
+                document.getElementById("InputIlce").value = addrIlce;
+                document.getElementById("InputAdres1").value = addrSokak;
+                document.getElementById("InputPhone").value = addrNumara;
+                document.getElementById("addressDuzenModalLongTitle").innerHTML = "Adres Düzenle";
+                var addAdressButton = document.getElementById("actionAddr");
+                addAdressButton.onclick = function(){adresEkle()};
+                $('#addressDuzenModal').modal('show');
+            }
+            function adresEklePencere(){
+                var formInputs = [document.getElementById("InputIl"), document.getElementById("InputIlce"), document.getElementById("InputAdres1"), document.getElementById("InputPhone")];
+                var placeHolderList = ["İl*", "İlçe*", "Açık Adres*", "Telefon Numarası*"];
+                // Free the input fields
+                for(var i = 0; i < formInputs.length; i++){
+                    formInputs[i].value = "";
+                    formInputs[i].placeholder = placeHolderList[i];
+                }
+                document.getElementById("addressDuzenModalLongTitle").innerHTML = "Adres Ekle";
+
+                $('#addressDuzenModal').modal('show');
+                var addAdressButton = document.getElementById("actionAddr");
+                addAdressButton.onclick = function(){adresEkle()};
+            }
+            function adresEkle(){
+                var formInputValues = [document.getElementById("InputIl").value, document.getElementById("InputIlce").value, document.getElementById("InputAdres1").value, document.getElementById("InputPhone").value];
+                var addressCount = 0;
+                var addressContainer = document.getElementById("addresContainer");
+                if(document.getElementById("noadres")){
+                    
+                }
+                else{
+                    addressCount = addressContainer.childElementCount;
+                }
+
+                var addressAttributes = [];
+                var addressClasses = ["col-lg-3 p-2", "card w-100", "card-header bg-transparent", "d-flex bd-highlight", "p-2 w-100 h6", "p-2 bd-highlight", "card-body", "card-title", "card-text", "card-text", "card-text", "card-text", "text-center my-2 mt-4"];
+                for(var i = 0; i < 10; i++){
+                    addressAttributes[i] = document.createElement("div");
+                    addressAttributes[i].className += addressClasses[i];
+                }
+                addressAttributes[1].style = "border-color: #aaa9a9;";
+                addressAttributes[2].style = "border-color: #aaa9a9; border-radius: 8px;";
+                addressAttributes[3].style = "margin-top: -10px; margin-bottom: -15px;";
+                addressAttributes[4].style = "font-weight: bold;";
+                addressAttributes[7].innerHTML = "Güllü merkez";
+                addressAttributes[7].className += " h5";
+
+                addressAttributes[4].innerHTML = "Ev Adresi";
+                addressAttributes[5].innerHTML = "<i class='fa fa-trash' aria-hidden='true'></i>";
+                addressAttributes[0].appendChild(addressAttributes[1]);
+                addressAttributes[1].appendChild(addressAttributes[2]);
+                addressAttributes[2].appendChild(addressAttributes[3]);
+                addressAttributes[3].appendChild(addressAttributes[4]);
+                addressAttributes[3].appendChild(addressAttributes[5]);
+                addressAttributes[1].appendChild(addressAttributes[6]);
+                addressAttributes[6].appendChild(addressAttributes[7]);
+                var textAddresses = [];
+                for(var i = 0; i < 4; i++){
+                    textAddresses[i] = document.createElement("div");
+                    textAddresses[i].className += "card-text";
+                    addressAttributes[6].appendChild(textAddresses[i]);
+                }
+                
+                addressAttributes[7].id = "addrSehir" + addressCount;
+                textAddresses[0].id = "addrIlce" + addressCount;
+                textAddresses[1].id = "addrSokak" + addressCount;
+                textAddresses[3].id = "addrNumara" + addressCount;
+                addressAttributes[7].innerHTML = formInputValues[0];
+                textAddresses[0].innerHTML = formInputValues[1];
+                textAddresses[1].innerHTML = formInputValues[2];
+                textAddresses[3].innerHTML = formInputValues[3];
+
+                var duzenleButton = document.createElement("button");
+                duzenleButton.type = "button";
+                duzenleButton.className += "btn btn-outline-info w-75 shadow";
+                duzenleButton.id = addressCount;
+                duzenleButton.onclick = function(){adresDuzenle(this.id)};
+                duzenleButton.innerHTML = "Düzenle";
+                var tempText = document.createElement("div");
+                tempText.className += addressClasses[12];
+                tempText.appendChild(duzenleButton);
+                addressAttributes[6].appendChild(tempText);
+                var totalPost = "/factory/user/addAddress?city=" + formInputValues[0] + "&ilce=" + formInputValues[1] + "&address=" + formInputValues[2] + "&phoneNumber=" + formInputValues[3] + "&zipCode=53634";
+                var xhttp = new XMLHttpRequest();
+                xhttp.open("POST", totalPost, true);
+                xhttp.send();
+                xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    var jsonConverted = JSON.parse(this.responseText);
+                    console.log(jsonConverted.feedback);
+                    }
+                };
+                // if(responseAddress.actionStatus == "true"){
+                //     if(document.getElementById("noadres")){
+                //     document.getElementById("noadres").remove();
+                //     }
+                //     addressContainer.appendChild(addressAttributes[0]);
+                //     $('#addressDuzenModal').modal('hide');
+                // }
+                // else{
+                //     console.log(responseAddress.actionStatus);
+                // }
+            }
+        </script>
+        <div class="modal fade" id="addressDuzenModal" tabindex="-1" role="dialog" aria-labelledby="addressDuzenModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="addressDuzenModalLongTitle">Düzenle</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <textarea type="text" class="form-control" id="InputIl" placeholder="İl*" rows="1" style="resize: none;"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <textarea type="text" class="form-control" id="InputIlce" placeholder="İlçe*"  rows="1" style="resize: none;"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <textarea type="text" class="form-control" id="InputAdres1" placeholder="Adres1*" rows="4" style="resize: none;"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <textarea type="text" class="form-control" id="InputPhone" placeholder="Telefon"  rows="1" style="resize: none;"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer" style="border: none;">
+                  <button type="button" class="btn btn-danger w-25" data-dismiss="modal">Kapat</button>
+                  <button type="button" class="btn btn-success w-25" id="actionAddr">Kaydet</button>
+                </div>
+              </div>
+            </div>
+        </div>      
+        <div id="limfooter">
+
+        </div>
+        
+        <script src="contentfiller.js"></script>
+    </div>
+</body>
+</html>

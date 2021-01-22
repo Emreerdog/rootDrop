@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Yellowtail">
+    <link rel="stylesheet" type="text/css" href="http://192.168.1.21/lim.css">
+    <title>Register</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <h1 class="register text-center"><a href="#">LimDrop</a></h1>
+        <div id="accountCarouselControls" class="carousel slide" data-ride="carousel" data-interval="false">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="card mx-auto my-auto" style="width: 25rem;">
+                    <div class="card-body">
+                      <h5 class="card-title">Hesap Oluştur</h5>
+                      
+                        <div class="form-group">
+                          <input type="email" class="form-control" id="CreateInputEmail" aria-describedby="emailHelp" placeholder="E-posta Adresiniz*">
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                              <input type="text" class="form-control" placeholder="Adı*" id="CreateName">
+                            </div>
+                            <div class="col">
+                              <input type="text" class="form-control" placeholder="Soyadı*" id="CreateSurname">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                          <input type="password" class="form-control" id="CreateInputPassword1" placeholder="Şifreniz*">
+                          <small id="emailHelp" class="form-text text-muted">En az 6 karakter.</small>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="CreateInputPassword2" placeholder="Şifreniz Tekrar*">
+                          </div>
+                        <div class="form-check">
+                          <input type="checkbox" class="form-check-input" id="Check1">
+                          <label class="form-check-label" for="Check2">Üyelik Sözleşmesi şartlarını okudum ve kabul ediyorum.</label>
+                        </div>
+                        <div class="form-check" style="padding-top: 5px;">
+                            <input type="checkbox" class="form-check-input" id="Check2">
+                            <label class="form-check-label" for="Check2">Yeni Gelişmelerden Haberdar Olmak İsterim</label>
+                          </div>
+                      
+                      <br>
+                      <button type="button" class="btn btn-info" style="float: right; width: 35%;" onclick="createAccount()", id="kayitButton">Kayıt Ol</button>
+                    </div>
+                </div>
+              </div>
+              <script src="/pxc/accountops.js"></script>
+              <div class="carousel-item">
+                <div class="card mx-auto my-auto" style="width: 25rem;">
+                    <div class="card-body">
+                      <h5 class="card-title">Az Kaldı...</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">E-Posta Doğrulama</h6>
+                        <p>Hesabınızı güvence altına almak için size ait olan <mark id="resultantEmail">bardglorious@gmail.com</mark> adresine bir doğrulama linki yollamış bulunmaktayız. Gelmiş olan E-postayı doğruladıysanız devam ediniz.</p>
+                        <div class="d-flex justify-content-center"><button type="button" class="btn btn-info" style="width: 40%;" onclick="window.location.href = 'http://192.168.1.41/pxc/loginpage.html">Giriş Yap</button>
+                        </div>
+                        <br>
+                        <h6>Link E-Postanıza Gelmedi mi ?</h6>
+                        <p>Aşağıdaki Linkten E-Postayı Tekrar Yollayın</p>
+                        <a class="hazir" href="https://www.limdrop.com/resend-mail">Tekrar Gönder</a>
+                        <br>
+                        <br>
+                      <div class="row">
+                        <div class="col">
+                            <button type="button" class="btn btn-info" style="float: left;" data-slide="prev" href="#accountCarouselControls">Önceki</button>
+                        </div>
+                        <div class="col">
+                            
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="card mx-auto my-auto" style="width: 25rem; border: none;">
+            <div class="card-body">
+              <h5 class="card-title">Zaten Üye misiniz ?</h5>
+              <a href="loginpage.html" class="card-text hazir">Giriş Yap</a>
+              <br>
+              <a href="#" class="card-text hazir">Şifremi Unuttum</a>
+            </div>
+          </div>
+        <div class="row text-center text-white" style="background-color: #00a99e; font-size: small; margin-top: 12%; height: 100%;">
+            <div class="col-sm my-auto">
+                <h2 class="footerLim">Limdrop</h2>
+                <div class="row panda">
+                    <div class="col-sm-3 lead">
+                        <a href="#">About us</a>
+                    </div>
+                    <div class="col-sm-3 lead">
+                        <a href="#">Kampanyalar</a>
+                    </div>
+                    <div class="col-sm-3 lead">
+                        <a href="#">S.S.S</a>
+                    </div>
+                    <div class="col-sm-3 lead">
+                        <a href="#">İletişim</a>
+                    </div>
+                </div>
+                <p style="line-height: 3.7em;"><i class="fa fa-copyright text-center"></i> LimDrop 2020</p>  
+            </div>
+        </div>
+    </div>
+</body>
+</html>

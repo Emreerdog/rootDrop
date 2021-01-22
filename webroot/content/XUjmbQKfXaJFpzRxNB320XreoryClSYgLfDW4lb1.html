@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body{
+    background-color: white;
+}
+
+.small-screen{
+    display: none;
+}
+
+a{
+  color: inherit;
+}
+
+.categories{
+    color: red;
+}
+
+#navContent{
+    padding-left: 20px;
+}
+
+#navorder{
+    z-index: 9999;
+    position: sticky;
+    overflow: hidden; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+    border-bottom: 1px solid rgba(165, 165, 165, 0.26);
+    background-color: white;
+}
+
+#navIt{
+    z-index: 999;
+    font-size: 20px;
+    padding-left: 50px;
+    padding-right: 10px;
+    padding-top: 10px;
+    color: rgb(87, 85, 85);
+    font-weight: bold;
+}
+
+#burgerButton{
+    border: none;
+    background: transparent;
+}
+
+#pagecontent{
+    padding-top: 35px;
+    padding-bottom: 35px;
+    color: rgb(83, 83, 83);
+}
+
+ul.products {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+    font-size: small;
+    line-height: 1.5;
+    font-weight: bold;
+}
+
+p.contentselector{
+    line-height: 2.0; 
+    font-size: small; 
+    color: cadetblue;
+}
+
+a:hover
+{
+  text-decoration: none;
+}
+.my-bottomrow{
+  background-color:darkslategray;
+}
+
+hr.information{
+    margin-top: 2px;
+    margin-bottom: 20px;
+    border: 2px solid cadetblue;
+}
+
+img.navimage {
+  border-radius: 4px;
+  padding: 5px;
+  width: 100px;
+  margin-left: -25px;
+}
+
+.infoimage{
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 30px;
+}
+
+img.infoima{
+    text-align: center;
+    width: 300px;
+}
+
+.info-row{
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+h3.info{
+    color: rgb(137, 195, 209);
+}
+
+.arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+#categoryLinks{
+    padding-bottom: 150px;
+}
+
+img.productImages{
+    width: 140px;
+}
+
+@media only screen and (max-width: 1024px){
+    #upperPart{
+        width: 100%;
+        margin-left: 0px;
+        margin-right: 0px;
+        padding: 0px;
+    }
+
+    .big-screen{
+        display: none;
+    }
+
+    .small-screen{
+        display: block;
+    }
+
+    #navIt{
+        padding-left: 0px;
+    }
+
+    img.navimage {
+        margin-left: 0px;
+    }
+
+    #navContent{
+        padding: 0px;
+        width: 100%;
+    }
+
+    #burgerButton{
+        float: right;
+        font-size: 25px;
+        margin-top: 5px;
+    }
+}
+
+@media only screen and (max-width: 768px){
+    #upperPart{
+        width: 100%;
+        margin-left: 0px;
+        margin-right: 0px;
+        padding: 0px;
+    }
+
+    .productrows{
+        margin-left: -30px;
+    }
+
+    .big-screen{
+        display: none;
+    }
+
+    .small-screen{
+        display: block;
+    }
+
+    #navIt{
+        padding-left: 0px;
+    }
+
+    img.navimage {
+        margin-left: 0px;
+    }
+
+    img.productImages{
+    width: 80px;
+    }
+
+    ul.products {
+    font-size: small;
+    }
+
+    #burgerButton{
+        float: right;
+        font-size: 25px;
+        margin-top: 5px;
+    }
+
+    #navContent{
+        padding: 0px;
+        width: 100%;
+    }
+}
+
+</style>
+</head>
+<body>
+    <nav class="navbar shadow-none bg-grey", id="navorder">
+        <ul class="nav navbar-nav navbar-expand-sm big-screen", id="navContent">
+            <li class="nav-item"><a href=""><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Blizzard_Entertainment_Logo.svg/1200px-Blizzard_Entertainment_Logo.svg.png", class="navimage"></a></li>
+            <li class="nav-item text-nowrap", id="navIt"><a href="tuna.php">Anasayfa</a></li>
+            <li class="nav-item text-nowrap", id="navIt"><a href="index.php">Hakkımızda</a></li>
+            <li class="nav-item text-nowrap", id="navIt"><a href="">Temizlik Kimyasalları</a></li>
+            <li class="nav-item text-nowrap", id="navIt"><a href="kagiturunleri.php", style="color: rgb(111, 41, 133);">Kağıt Ürünleri</a></li>
+            <li class="nav-item text-nowrap", id="navIt"><a href="">Makineler</a></li>
+            <li class="nav-item text-nowrap", id="navIt"><a href="">Diğer Ürünler</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-expand-sm small-screen", id="navContent">
+            <li class="nav-item", id="upperPart">
+                <span><a href=""><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Blizzard_Entertainment_Logo.svg/1200px-Blizzard_Entertainment_Logo.svg.png", class="navimage"></a></span>
+                <span id="burgerButton">
+                    <button id="burgerButton" data-toggle="collapse" data-target="#dropdown"><i class="fa fa-bars"></i></button>
+                </span>
+            </li>
+            <div class="collapse", id="dropdown">
+                <li class="nav-item", id="navIt"><a href="">Anasayfa</a></li>
+                <li class="nav-item", id="navIt"><a href="">Hakkımızda</a></li>
+                <li class="nav-item", id="navIt"><a href="">Temizlik Kimyasalları</a></li>
+                <li class="nav-item", id="navIt"><a href="">Kağıt Ürünleri</a></li>
+                <li class="nav-item", id="navIt"><a href="">Makineler</a></li>
+                <li class="nav-item", id="navIt"><a href="">Diğer Ürünler</a></li>
+            </div>
+        </ul>
+    </nav>
+    <div class="container-fluid">
+        <div class="container" style="padding-top: 15px; max-width: 1300px;">
+            <h2 style="border-bottom: 2px solid mediumorchid; padding-bottom: 5px;">
+                Kağıt Ürünleri
+            </h2>
+            <div class="row" style="margin-top: 20px;">
+                <div class="col-md-9 col-12">
+                    <div class="row flex-nowrap productrows">
+                        <div class="col-md-3">
+                            <ul class="products">
+                                <li>
+                                    <a href=""><img class="productImages", src="urunler/klozetortu.jpg"></img></a>
+                                    <p><a href="">Selpak Proffesional<br>Sensörlü Havlu<br>Dispanseri</a></p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3">
+                            <ul class="products">
+                                <li>
+                                    <a href=""><img class="productImages", src="urunler/klozetortu.jpg"></img></a>
+                                    <p><a href="">Selpak Proffesional<br>Sensörlü Havlu<br>Dispanseri</a></p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3">
+                            <ul class="products">
+                                <li>
+                                    <a href=""><img class="productImages", src="urunler/klozetortu.jpg"></img></a>
+                                    <p><a href="">Selpak Proffesional<br>Sensörlü Havlu<br>Dispanseri</a></p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3">
+                            <ul class="products">
+                                <li>
+                                    <a href=""><img class="productImages", src="urunler/klozetortu.jpg"></img></a>
+                                    <p><a href="">Selpak Proffesional<br>Sensörlü Havlu<br>Dispanseri</a></p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row flex-nowrap productrows">
+                        <div class="col-md-3">
+                            <ul class="products">
+                                <li>
+                                    <a href=""><img class="productImages", src="urunler/vkatlipecete.jpg"></img></a>
+                                    <p><a href="">Selpak Professional<br>Premium İçten Çekmeli<br>Tuvalet Kağıdı</a></p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3">
+                            <ul class="products">
+                                <li>
+                                    <a href=""><img class="productImages", src="urunler/vkatlidispanser.jpg"></img></a>
+                                    <p><a href="">Selpak Professional<br>Premium IV Katlı Peçete<br>Dispenseri</a></p>
+                                </li>
+                            </ul>    
+                        </div>
+                        <div class="col-md-3">
+                            <ul class="products">
+                                <li>
+                                    <a href=""><img class="productImages", src="urunler/vkatlipecete.jpg"></img></a>
+                                    <p><a href="">Selpak Professional<br>Premium V Katlama Peçete</a></p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3">
+                            <ul class="products">
+                                <li>
+                                  <a href=""><img class="productImages", src="urunler/geri.jpg"></img></a>
+                                  <p><a href="">Selpak Professional<br>Geri Dönüşümlü Peçete</a></p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row flex-nowrap productrows">
+                        <div class="col-md-3">
+                            <ul class="products">
+                                <li>
+                                  <a href=""><img class="productImages", src="urunler/geri.jpg"></img></a>
+                                  <p><a href="">Selpak Professional<br>Geri Dönüşümlü Peçete</a></p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3">
+                            <ul class="products">
+                                <li>
+                                  <a href=""><img class="productImages", src="urunler/kutumendil.jpg"></img></a>
+                                  <p><a href="">Selpak Professional<br>Premium Kutu Mendil</a></p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3">
+                            <ul class="products">
+                                <li>
+                                  <a href=""><img class="productImages", src="urunler/extrakutu.jpg"></img></a>
+                                  <p><a href="">Selpak Professional<br>Extra Kutu Mendil</a></p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3">
+                            <ul class="products">
+                                <li>
+                                  <a href=""><img class="productImages", src="urunler/muayene.jpg"></img></a>
+                                  <p><a href="">Selpak Professional<br>Muayene Masa Örtüsü Dispenseri</a></p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row flex-nowrap productrows">
+                        <div class="col-md-3">
+                            <ul class="products">
+                                <li>
+                                  <a href=""><img class="productImages", src="urunler/klozet.jpg"></img></a>
+                                  <p><a href="">Selpak Professional<br>Klozet Kapak Örtüsü Dispenseri</a></p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3">
+                            <ul class="products">
+                                <li>
+                                  <a href=""><img class="productImages", src="urunler/klozetortu.jpg"></img></a>
+                                  <p><a href="">Selpak Professional<br>Klozet Kapak Örtüsü</a></p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3">
+                            <ul class="products">
+                                <li>
+                                  <a href=""><img class="productImages", src="urunler/klozetortu.jpg"></img></a>
+                                  <p><a href="">Selpak Professional<br>Klozet Kapak Örtüsü</a></p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3">
+                            <ul class="products">
+                                <li>
+                                  <a href=""><img class="productImages", src="urunler/klozetortu.jpg"></img></a>
+                                  <p><a href="">Selpak Professional<br>Klozet Kapak Örtüsü</a></p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row flex-nowrap productrows">
+                        <div class="col-md-3">
+                            <ul class="products">
+                                <li>
+                                  <a href=""><img class="productImages", src="urunler/klozetortu.jpg"></img></a>
+                                  <p><a href="">Selpak Professional<br>Klozet Kapak Örtüsü</a></p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3">
+                            <ul class="products">
+                                <li>
+                                  <a href=""><img class="productImages", src="urunler/klozetortu.jpg"></img></a>
+                                  <p><a href="">Selpak Professional<br>Klozet Kapak Örtüsü</a></p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3">
+                            <ul class="products">
+                                <li>
+                                  <a href=""><img class="productImages", src="urunler/klozetortu.jpg"></img></a>
+                                  <p><a href="">Selpak Professional<br>Klozet Kapak Örtüsü</a></p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3">
+                            <ul class="products">
+                                <li>
+                                  <a href=""><img class="productImages", src="urunler/klozetortu.jpg"></img></a>
+                                  <p><a href="">Selpak Professional<br>Klozet Kapak Örtüsü</a></p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div>
+                        <h5 class="text-nowrap">Tüm kategoriler</h5>
+                        <hr>
+                        <p class="contentselector text-nowrap">
+                            <i class="fa fa-angle-right", style="padding-right: 8px; "></i><a href="">Banyo Hijyen Ürünleri</a><br>
+                            <i class="fa fa-angle-right", style="padding-right: 8px;"></i><a href="">Çamaşır Hijyen Ürünleri</a><br>
+                            <i class="fa fa-angle-right", style="padding-right: 8px;"></i><a href="">Ekolojik Ürünler</a><br>
+                            <i class="fa fa-angle-right", style="padding-right: 8px;"></i><a href="">Genel Alan Hijyen Ürünleri</a><br>
+                            <i class="fa fa-angle-right", style="padding-right: 8px;"></i><a href="">Kişisel Temizlik ve Hijyen</a><br>
+                            <i class="fa fa-angle-right", style="padding-right: 8px;"></i><a href="">Mutfak Hijyen Ürünleri</a><br>
+                            <i class="fa fa-angle-right", style="padding-right: 8px;"></i><a href="">Su Şartlandırma</a><br>
+                            <i class="fa fa-angle-right", style="padding-right: 8px;"></i><a href="">Kağıt Ürünleri</a><br>
+                            <i class="fa fa-angle-right", style="padding-right: 8px;"></i><a href="">Temizlik Makineleri</a><br>
+                            <i class="fa fa-angle-right", style="padding-right: 8px;"></i><a href="">Diğer Ürünler</a><br><br>
+                            <p>Ürün siparişleri ve detaylı bilgi için ulaşın:</p>
+                            <button type="button" class="btn btn-info">İletişim</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid bg-dark">
+        <div class="container">
+            <div class="row info-row">
+                <div class="col-md-4">
+                    <h3 class="info">BLIZZARD</h3>
+                    <hr class="information">
+                    <p>
+                        Ultrices mi tempus imperdiet nulla malesuada. Cursus turpis massa tincidunt dui. Amet est placerat in egestas erat. Ornare suspendisse sed nisi lacus sed viverra tellus. Sit amet justo donec enim diam. Nulla facilisi cras fermentum odio eu.
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h3 class="info">Hizmetler</h3>
+                    <hr class="information">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ut sapien felis. Duis accumsan at risus ut hendrerit. Fusce sed nisl lectus. Sed feugiat lacus a dictum mollis. Nullam ex metus, blandit sit amet dui in, sodales egestas quam. Donec lectus elit, interdum sit amet scelerisque in, auctor a magna
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h3 class="info">İletişim</h3>
+                    <hr class="information">
+                    <p>
+                        <b>Adres:</b> Batı Bulvarı Timko İş Yerileri Sitesi 177. Cad. No: 19 / F1-8 – Yenimahalle / ANKARA
+                        <br>
+                        <b>Tel:</b> 0507 059 10 08
+                        <br>
+                        <b>Mail:</b> emreerdog@hotmail.com
+                    </p>
+                </div>
+            </div>
+            <div class="container infoimage">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Blizzard_Entertainment_Logo.svg/1200px-Blizzard_Entertainment_Logo.svg.png", class="infoima">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

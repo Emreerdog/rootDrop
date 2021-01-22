@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Yellowtail">
+        <link rel="stylesheet" type="text/css" href="lim.css">
+        <title>Main Page</title>
+    </head>
+    <style>
+      .acceptBasket:hover{
+        cursor: pointer;
+      }
+    </style>
+<body>
+    <div class="container-fluid shadow-sm mainBody">
+        <nav class="navbar navbar-expand-lg navbar-light justify-content-between ml-1">
+            <ul class="navbar-nav mr-3">
+                <li class="nav-item mr-2 navBurger">
+                    <a href="#"><i class="fa fa-bars"></i></a>
+                </li>
+                <li class="nav-item">
+                    <!--<span class="navbar-text text-dark" style="font-size: 1.2em;">Kategoriler</span>-->
+                </li>
+              </ul>
+                     
+            <div class="d-inline p-2 navOther">
+                <a href="#" class="navbasket"><i class="fa fa-shopping-basket"></i></a>
+                <a href="#"><i class="fa fa-user"></i></a>
+            </div>
+        </nav>
+        <span>
+            <h1 class="limhead mx-3">LimDrop</h1>
+        </span>
+        <br>
+        <div class="row mx-1">
+            <div class="col-md-4">
+                <div class="d-flex bd-highlight">
+                    <div class="p-2 w-75 bd-highlight h4" id="productTitle">IPHONE XS 256GB GOLD</div>
+                    <div class="p-2"><i class="fa fa-clock-o" aria-hidden="true" id="remainingTime"></i>10 Gün</div>
+                </div>
+                <div class="d-flex flex-column bd-highlight mb-3">
+                    <div class="p-2 bd-highlight border rounded-lg h-50"><img src="https://img.freepik.com/free-vector/gray-white-gradient-abstract-background_53876-60238.jpg?size=338&ext=jpg" alt="" style="width: 100%; height: 100%;" id="mainPhoto"></div>
+                    <div class="d-flex flex-wrap mt-2" id="listPhotos">
+                        
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 text-cente">
+                <div class="progress" style="transform: rotate(-90deg); margin-top: 20em; height: 3em;">
+                    <div class="progress-bar progress-bar-striped" style="width: 40%; background-color: #00a99e;">
+                        <i class="fa fa-user" style="transform: rotate(90deg);"></i>
+                    </div>
+                    <div class="progress-bar progress-bar-striped bg-secondary" style="width:10%;">
+                        <i class="fa fa-user" style="transform: rotate(90deg);"></i>
+                    </div>
+                    <div class="progress-bar progress-bar-striped bg-secondary" style="width:20%;">
+                        <i class="fa fa-user" style="transform: rotate(90deg);"></i>
+                    </div>
+                    <div class="progress-bar progress-bar-striped bg-secondary" style="width:30%;">
+                        <i class="fa fa-user" style="transform: rotate(90deg);"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5 pt-1">
+                <p class="h4 mb-3">Özellikler</p>
+                <table class="table table-borderless">
+                    <tbody id="propertyTable">
+                      
+                    </tbody>
+                </table>
+                <div class="katilContainer">
+                    <a class="shadow border text-nowrap acceptBasket" style="text-decoration: none; font-size: x-large; float: right;" onclick="sendProduct()">Yükle</a>
+                </div>
+            </div>
+        </div>
+        <h1 class="limhead mx-3 mt-3", style="font-family: 'Raleway'; font-size: 2em; font-weight: bold;">Detaylar</h1>
+        <div class="btn-group btn-group-toggle mx-3" data-toggle="buttons">
+            <label class="btn btn-secondary active mr-2" style="width: 9em;">
+              <input type="radio" name="options" id="option1" autocomplete="off" checked> Ürün Açıklaması
+            </label>
+            <label class="btn btn-secondary" style="width: 9em;">
+              <input type="radio" name="options" id="option2" autocomplete="off"> Yorumlar
+            </label>
+        </div>
+        <div class="container-fluid py-5 px-5">
+          <input type="file" id="productContent" name="productContent">
+          <div id="contentPreview">
+            
+          </div>
+        </div>
+
+        <div class="row text-center text-white" style="background-color: #00a99e; font-size: small;">
+            <div class="col-sm my-auto">
+                <h2 class="footerLim">Limdrop</h2>
+                <div class="row panda">
+                    <div class="col-sm-3">
+                        <a href="#">About us</a>
+                    </div>
+                    <div class="col-sm-3">
+                        <a href="#">Kampanyalar</a>
+                    </div>
+                    <div class="col-sm-3">
+                        <a href="#">S.S.S</a>
+                    </div>
+                    <div class="col-sm-3">
+                        <a href="#">İletişim</a>
+                    </div>
+                </div>
+                <p style="line-height: 3.7em;"><i class="fa fa-copyright text-center"></i> LimDrop 2020</p>  
+            </div>
+        </div>
+    </div>
+    <div style="position: absolute; display: none;" id="photoInputs">
+    </div>
+</body>
+</html>
+<script>
+    var productForm = new FormData();
+    var fileForm = new FormData();
+    var productContentHolder = document.getElementById("productContent");
+    var productContentPreviewer = document.getElementById("contentPreview");
+
+    productContentHolder.onchange = function(){
+        var fr = new FileReader();
+        productContentPreviewer.innerHTML = fr.readAsText(this.files[0]);
+    }
+
+    function autoClick(imgId){
+      console.log(imgId);
+      var inputID = "#imagefile" + imgId.replace( /^\D+/g, '');
+      console.log(document.getElementById("photoInputs"));
+      $(inputID).trigger('click');
+    }
+    var titlePro = document.getElementById("productTitle");
+    var remainTime = document.getElementById("remainingTime");
+    var mainPhoto = document.getElementById("mainPhoto");
+    var propertyTable = document.getElementById("propertyTable");
+    var photoList = document.getElementById("listPhotos");
+    var photoInputList = document.getElementById("photoInputs");
+
+    var query = window.location.search;
+    var urlParams = new URLSearchParams(query);
+    titlePro.innerHTML = urlParams.get("title");
+    remainTime.innerHTML = urlParams.get("outofdate");
+
+    productForm.append("title", urlParams.get("title"));
+    productForm.append("outofdate", urlParams.get("outofdate"));
+
+    var countLayer = parseInt(urlParams.get("layerCount"));
+    var propCount = parseInt(urlParams.get("propertyCount"));
+    var imgCount = parseInt(urlParams.get("imageCount"));
+
+    productForm.append("layerCount", countLayer);
+    productForm.append("propertyCount", propCount);
+    productForm.append("imageCount", imgCount);
+
+    for(var i = 0; i < imgCount; i++){
+        var currentImageContainer = document.createElement("div");
+        currentImageContainer.className += "p-2 bd-highlight border rounded-lg mr-2 mb-2";
+        currentImageContainer.style.width = "20%";
+
+        var currentImage = document.createElement("img");
+        currentImage.src += "https://img.freepik.com/free-vector/gray-white-gradient-abstract-background_53876-60238.jpg?size=338&ext=jpg";
+        currentImage.style.width = "100%";
+        currentImage.style.height = "100%";
+        currentImage.id = "innerIMG" + i;
+        currentImage.onclick = function(){
+          autoClick(this.id);
+        }
+        currentImageContainer.appendChild(currentImage);
+        photoList.appendChild(currentImageContainer);
+
+        var imageInput = document.createElement("input");
+        imageInput.type = "file";
+        imageInput.style.display = "none";
+        imageInput.id = "imagefile" + i;
+        imageInput.name = "imagefile" + i;
+        imageInput.onchange = function(){
+          var biggerIMG = document.getElementById("")
+          var currentImageID = "innerIMG" + this.id.replace( /^\D+/g, '');
+          var _currentImage = document.getElementById(currentImageID);
+          _currentImage.src = window.URL.createObjectURL(this.files[0]);
+          mainPhoto.src = window.URL.createObjectURL(this.files[0]);
+          fileForm.set("imgfile" + currentImageID, this.files[0]);
+        }
+
+        photoInputList.append(imageInput);
+    }
+
+    for(var i = 0; i < propCount; i++){
+        console.log(urlParams.get("PL" + i));
+        console.log(urlParams.get("PR" + i));
+        var tempTablerow = document.createElement("tr");
+        tempTablerow.className += "border-bottom";
+        var tablePL = document.createElement("td");
+        var tablePR = document.createElement("td");
+        tablePL.style = "background-color: #F0F0F0";
+        var _tablePL = urlParams.get("PL" + i);
+        var _tablePR = urlParams.get("PR" + i)
+        productForm.append("PL" + i, _tablePL);
+        productForm.append("PR" + i, _tablePR);
+        tablePL.innerHTML = _tablePL;
+        tablePR.innerHTML = _tablePR;
+
+        propertyTable.appendChild(tempTablerow);
+        tempTablerow.appendChild(tablePL);
+        tempTablerow.appendChild(tablePR);
+    }
+
+    function sendProduct(){
+      var AJAXrequest = new XMLHttpRequest();
+      $.post("http://192.168.1.21/uploads/enterprops" + query, function(data, status){
+        console.log(data);
+      });
+      // $.get("http://192.168.1.21/uploads/yukle", {value1: productForm.get("title")});
+      jQuery.ajax({
+        url: 'http://192.168.1.21/uploads/yukle',
+        data: fileForm,
+        cache: false,
+        contentType: false,
+        processData: false,
+        method: 'POST',
+        type: 'POST', // For jQuery < 1.9
+      });
+    }
+</script>

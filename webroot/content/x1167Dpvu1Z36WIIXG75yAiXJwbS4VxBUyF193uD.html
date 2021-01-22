@@ -1,0 +1,382 @@
+<?php
+function writemsg($currentProduct){
+	
+}
+
+$hostIP = 'localhost';
+$username = 'erdo';
+$pass = 'Mrn78hasanjk//15';
+$dbName = 'participants';
+
+$connect = new mysqli($hostIP, $username, $pass, $dbName);
+
+$sql = "SELECT name FROM products";
+$result = $connect->query($sql);
+writemsg();
+
+$connect->close();
+
+
+$voteColors = array('cadetblue', 'red', 'green', 'blue');
+
+$footer="<div class='container-fluid text-white text-center' style='background-color: #00a99e;'>
+          <h2 style='font-size: 60px;'>LimDrop</h2>
+          <p style='display: inline; padding: 10px; font-size: large;'>S.S.S</p>
+          <div class='vl' style='display: inline;'></div>
+          <p style='display: inline; padding: 10px; font-size: large;'>İletişim</p>
+          <br>
+          <div style='padding-top: 15px;'>
+            <i class='fas fa-copyright' style='display: inline;'></i>
+            <p class='d-inline p-10'>LimDrop 2020</p>
+          </div>
+        </div>";
+?>
+
+<!DOCTYPE html>
+<html lang="tr-TR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Yellowtail">
+    <link rel="stylesheet" type="text/css" href="lim.css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Products', 'Next Drop'],
+          ['IPhone',     11],
+          ['XIAM',      2],
+          ['Samsung',  2],
+          ['ZAMSON', 3]
+        ]);
+
+        var options = {
+          legend: 'none',
+          slices:{
+            0:{color: 'cadetblue'},
+            1:{color: 'red'},
+            2:{color: 'green'},
+            3:{color: 'blue'}
+          }
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('chartContainer'));
+
+        chart.draw(data, options);
+      }
+    </script>
+</head>
+<style>
+
+</style>
+<body>
+    <div class="container-fluid bg-white mx-auto shadow" style="width: 80%; min-height: 100%; height: 100%;">
+
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <ul class="navbar-nav w-100" style="padding-top: 10px; margin-bottom: -15px;">
+            <li class="nav-item">
+              <i class="fas fa-bars" style="font-size: larger;"></i>
+            </li>
+            <li class="nav-item" style="margin-bottom: 10px; margin-left: 10px; margin-top: 5px;">
+              <h5 style="line-height: 0.5;">KATEGORİLER</h5>
+            </li>
+            <li class="nav-item" style="float: right; padding-left: 67vw;">
+              <button type="button" style="background-color: transparent; border: none;"><i class="fas fa-user"></i></button>
+            </li>
+          </ul>
+        </nav>
+
+        <h1 style="margin-top: -20px;">LimDrop</h1>
+        <br>
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="overflow: hidden; height: 42vw; margin-bottom: 2vw; margin-top: 0vw;">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img class="d-block w-100" src="iphone-xs.jpg" alt="First slide">
+              <div class="carousel-caption d-block d-md-block h-75 text-left">
+                <h3 style="font-size: 3vw; font-weight: bold;">Duis aute irure dolor in<br>reprehenderit in voluptate</h3>
+                <br>
+                <p>Excepteur sint occaecat cupidatat non proident<br>sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                <br>
+                <button type="button" class="btn btn-primary btn-lg btn-info">İncele</button>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="https://herevde.net/wp-content/uploads/2019/01/samsung-s10.jpg" alt="Second slide">
+              <div class="carousel-caption d-block d-md-block h-75 text-left">
+                <h3 style="font-size: 3vw; font-weight: bold;">Neque vitae tempus quam pellentesque nec nam<br>Massa tempor nec feugiat nisl pretium</h3>
+                <br>
+                <p>Lacus viverra vitae congue eu consequat<br>ac felis. Sed risus ultricies tristique nulla</p>
+                <br>
+                <button type="button" class="btn btn-primary btn-lg btn-info">İncele</button>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="https://theunlockr.com/wp-content/uploads/2018/05/LG-G7-Home-Screen.jpg" alt="Third slide">
+              <div class="carousel-caption d-block d-md-block h-75 text-left">
+                <h3 style="font-size: 3vw; font-weight: bold;">Aliquet lectus proin nibh nisl<br>condimentum id venenatis a condimentum</h3>
+                <br>
+                <p>Nunc faucibus a pellentesque sit amet porttitor</p>
+                <br>
+                <button type="button" class="btn btn-primary btn-lg btn-info">İncele</button>
+              </div>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <h1 style="font-family: 'Raleway'; font-weight: bold;">TOPLULUK</h1>
+
+        <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="row flex-nowrap">
+                  <div class="col-md-4 mx-auto">
+                      <img src="https://www.birnumara.com/image/data/resimler/xiaomi-redmi-note-8-pro-128gb-yesil-cep-telefonu-xiaomi-turkiye-garantili-21684.jpg" alt="phone", style="width: 100%; height: 90%;">
+                  </div>
+                  <div class="col-md-8">
+                      <div style="display: inline-block;">
+                          <h4><span>IPhone XS 256Gb</span></h4>
+                          <br>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                      </div>
+                  </div>                      
+                </div>
+                <div class="row flex-nowrap">
+                  <div class="col-md-4 mx-auto">
+                      <img src="https://cdn.akakce.com/lg/lg-g7-thinq-64-gb-mavi-z.jpg" alt="phone", style="width: 100%; height: 90%;">
+                  </div>
+                  <div class="col-md-8">
+                      <div style="display: inline-block;">
+                          <h4><span>IPhone XS 256Gb</span></h4>
+                          <br>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                      </div>
+                  </div>                      
+                </div>
+              </div>
+              <div class="col-md-4", id="chartContainer">
+
+              </div>
+              <div class="col-md-4">
+                <div class="row flex-nowrap">
+                  <div class="col-md-4 mx-auto">
+                      <img src="https://www.birnumara.com/image/data/resimler/xiaomi-redmi-note-8-pro-128gb-yesil-cep-telefonu-xiaomi-turkiye-garantili-21684.jpg" alt="phone", style="width: 100%; height: 90%;">
+                  </div>
+                  <div class="col-md-8">
+                      <div style="display: inline-block;">
+                          <h4><span>IPhone XS 256Gb</span></h4>
+                          <br>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                      </div>
+                  </div>                      
+                </div>
+                <div class="row flex-nowrap">
+                  <div class="col-md-4 mx-auto">
+                      <img src="https://www.birnumara.com/image/data/resimler/xiaomi-redmi-note-8-pro-128gb-yesil-cep-telefonu-xiaomi-turkiye-garantili-21684.jpg" alt="phone", style="width: 100%; height: 90%;">
+                  </div>
+                  <div class="col-md-8">
+                      <div style="display: inline-block;">
+                          <h4><span>IPhone XS 256Gb</span></h4>
+                          <br>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                      </div>
+                  </div>                      
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <br>
+        <h1 style="font-family: 'Raleway'; font-weight: bold;">KATEGORİLER</h1>
+        <br>
+        <div class="container-fluid" style="width: 100%;">
+          <div class="d-flex bd-highlight justify-content-center">
+            <div class="p-2 flex-fill bd-highlight text-center text-white cat">CEP TELEFONU</div>
+            <div class="p-2 flex-fill bd-highlight text-center text-white cat">TABLET</div>
+            <div class="p-2 flex-fill bd-highlight text-center text-white cat">NOTEBOOK</div>
+            <div class="p-2 flex-fill bd-highlight text-center text-white cat">LOREM</div>
+            <div class="p-2 flex-fill bd-highlight text-center text-white cat">IPSUM</div>
+            <div class="p-2 flex-fill bd-highlight text-center text-white cat">DOLOR</div>
+          </div>
+        </div>
+        <br>
+        <div class="container-fluid">
+          <div class="row justify-content-center ml-5">
+            <div class="col-md-3">
+              <div class="card categ">
+                <img class="card-img-top" src="https://n11scdn.akamaized.net/a1/450/elektronik/ikinci-el-telefonlar/samsung-galaxy-s10-lite-128gb-mavi-samsung-turkiye-garantili-out__1290015354345715.jpg" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title text-center">SAMSUNG GALAXY S10 PLUS</h5>
+                  <div class="row text-center">
+                    <div class="col-md-4">
+                      <div class="row">
+                        <i class="fas fa-lira-sign"></i>
+                        <p style="line-height: 1; margin-left: 2px;">500</p>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="row">
+                        <i class="fas fa-user"></i>
+                        <p style="line-height: 1; margin-left: 2px;">500</p>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="row">
+                        <i class="fa fa-clock-o"></i>
+                        <p style="line-height: 1; margin-left: 2px;">500</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card categ" style="width: 14rem;">
+                <img class="card-img-top" src="https://n11scdn.akamaized.net/a1/450/elektronik/ikinci-el-telefonlar/lg-g7-thinq-64gb-siyah-ithalatci-garantili-outlet-urun__1514793177581418.JPG" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title text-center">LG G7 THINQ 64GB</h5>
+                  <div class="row text-center">
+                    <div class="col-md-4">
+                      <div class="row">
+                        <i class="fas fa-lira-sign"></i>
+                        <p style="line-height: 1; margin-left: 2px;">500</p>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="row">
+                        <i class="fas fa-user"></i>
+                        <p style="line-height: 1; margin-left: 2px;">500</p>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="row">
+                        <i class="fa fa-clock-o"></i>
+                        <p style="line-height: 1; margin-left: 2px;">500</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card categ" style="width: 14rem;">
+                <img class="card-img-top" src="https://www.oryox.net/images/urunler/xiaomi-redmi-note-8-pro-64gb-xiaomi-turkiye-garantili-2561_1.jpg" alt="Card image cap">
+                <div class="card-body text-center">
+                  <h5 class="card-title text-nowrap">XIAOMI REDMI NOTE 8 PRO</h5>
+                  <div class="row text-center">
+                    <div class="col-md-4">
+                      <div class="row">
+                        <i class="fas fa-lira-sign"></i>
+                        <p style="line-height: 1; margin-left: 2px;">500</p>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="row">
+                        <i class="fas fa-user"></i>
+                        <p style="line-height: 1; margin-left: 2px;">500</p>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="row">
+                        <i class="fa fa-clock-o"></i>
+                        <p style="line-height: 1; margin-left: 2px;">500</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card categ" style="width: 14rem;">
+                <img class="card-img-top" src="https://www.hediyedelisi.com/wp-content/uploads/2018/10/huawei-p20-lite-64-gb-huawei-turkiye-garantili__0537710458748881.jpg" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title text-center">HUAWEI P20 LITE</h5>
+                  <div class="row text-center">
+                    <div class="col-md-4">
+                      <div class="row">
+                        <i class="fas fa-lira-sign"></i>
+                        <p style="line-height: 1; margin-left: 2px;">500</p>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="row">
+                        <i class="fas fa-user"></i>
+                        <p style="line-height: 1; margin-left: 2px;">500</p>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="row">
+                        <i class="fa fa-clock-o"></i>
+                        <p style="line-height: 1; margin-left: 2px;">500</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <?php echo $footer; ?>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+m 8
+l 12
+xl 13
+
+m 8
+l 8
+xl 12
